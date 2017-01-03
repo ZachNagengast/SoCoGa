@@ -1,8 +1,14 @@
 #!/usr/bin/env python
 import time
 import datetime
-import os
-SOCOGA_DROPBOX_TOKEN = os.environ['SOCOGA_DROPBOX_TOKEN']
+import ConfigParser
+configParser = ConfigParser.RawConfigParser()
+configFilePath = r'config.txt'
+configParser.read(configFilePath)
+
+#Setup config
+dropboxToken = configParser.get('socoga config', 'dropbox-token')
+platform = configParser.get('socoga config', 'platform')
 
 # Include the Dropbox SDK
 import dropbox
@@ -11,8 +17,6 @@ from dropbox.client import DropboxClient
 #Include Sonos Controller
 from soco import SoCo
 from soco import SonosDiscovery
-
-platform = 'sonos'
 
 def handleVolume(volume):
     # print "Handling Sonos Volume: Set to " + volume + "%"
