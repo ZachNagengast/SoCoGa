@@ -32,7 +32,7 @@ First you will need to create a personal dropbox app by signing up at https://ww
 4. Enter a name your personal app - the name doesn't matter but will be used as the **[dropbox-app-name]** variable in the IFTTT applet.
 
 
-Next, generate a personal token by following the instructions [here](https://blogs.dropbox.com/developers/2014/05/generate-an-access-token-for-your-own-account/) which will you will need to paste in for the **[dropbox-token]** in socoga.py.
+Next, generate a personal token by following the instructions [here](https://blogs.dropbox.com/developers/2014/05/generate-an-access-token-for-your-own-account/) which you will need to paste in for the **[dropbox-token]** in config.txt.
 
 ###Setup IFTTT
 
@@ -56,21 +56,31 @@ Install dropbox on the device (you may need to reboot at this point):
 
 Finally, setup the socoga.py script:
 
-Create your dropbox environment variable (or just hardcode it into the script):
-
-``export SOCOGA_DROPBOX_TOKEN=[dropbox-token]``
-
 Using your preferred method, setup the socoga.py script to run continuously at a set interval on your device, I've found 3 seconds works just fine.
 
-If you choose to use [Home Assistant](), you can do this by following the [install instructions](), then clone this repo into a /.homeassisant/scripts/ directory, and lastly add the following automation to your configuration.yaml file:
+Create your config file (or just hardcode it into the script):
+
+``cp config.txt.example config.txt``
+
+``sudo nano config.txt``
+
+Replace **[dropbox-token]** with your generated dropbox token found above.
+```
+[socoga config]
+dropbox-token = [dropbox-token]
+platform = sonos
+```
+Make sure your `configFilePath` in socoga.py is pointing to the correct location for config.txt as well.
+
+At this point, if you chose to use [Home Assistant](), you can can setup an automation by following the [install instructions here](), then cloning this repo into the main /.homeassisant/ directory, and lastly adding the following automation to your configuration.yaml file:
 
 ```
 shell_command:
-  alias: "SoCoGa script"
+  alias: "socoga script"
   socoga: "python /home/homeassistant/.homeassistant/SoCoGa/socoga.py"
 
 automation:
-  alias: "Control Sonos with Google Home voice commands"
+  alias: "Control Sonos with Google Home"
   initial_state: True
   hide_entity: False
   trigger:
@@ -80,7 +90,7 @@ automation:
     service: shell_command.socoga
 ```
 
-If everything worked correctly it should look like this:
+If everything worked correctly your Home Assistant interface should look like this:
 
 ![alt homeassistant](homeassistant-example.png)
 

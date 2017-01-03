@@ -2,12 +2,12 @@
 import time
 import datetime
 import ConfigParser
-configParser = ConfigParser.RawConfigParser()
-configFilePath = r'config.txt'
+configParser = ConfigParser.ConfigParser()
+configFilePath = '/home/homeassistant/.homeassistant/SoCoGa/config.txt'
 configParser.read(configFilePath)
 
 #Setup config
-dropboxToken = configParser.get('socoga config', 'dropbox-token')
+dropboxToken = configParser.get('socoga config', 'dropbox_token')
 platform = configParser.get('socoga config', 'platform')
 
 # Include the Dropbox SDK
