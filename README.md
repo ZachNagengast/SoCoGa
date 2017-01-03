@@ -10,6 +10,7 @@ IFTTT applets
 
 Current working applets (Note: the word "set" is a GA override so alternative verbs must be used):
 - [Volume: "turn Sonos volume to #"](http://imgur.com/vbWUv7z)
+    - File name syntax: "volume.#.txt"
 
 Future:
 - Toggle speech enhancement
