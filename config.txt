@@ -1,0 +1,2 @@
+[socoga config]
+dropbox-token = [dropbox-token]

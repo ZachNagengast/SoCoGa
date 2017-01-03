@@ -23,6 +23,8 @@ SoCoGa requires a Python script to run continuously on the same local network as
 
 This process takes about 20 minutes so buckle up!
 
+###Setup Dropbox
+
 First you will need to create a personal dropbox app by signing up at https://www.dropbox.com/developers/apps/. Sign up using the following steps:
 1. Click "Create app"
 2. Select "Dropbox Api"
@@ -32,10 +34,13 @@ First you will need to create a personal dropbox app by signing up at https://ww
 
 Next, generate a personal token by following the instructions [here](https://blogs.dropbox.com/developers/2014/05/generate-an-access-token-for-your-own-account/) which will you will need to paste in for the **[dropbox-token]** in socoga.py.
 
+###Setup IFTTT
+
 Now add one of the applets listed [above]() to your IFTTT account. Once you have connected your dropbox account, edit the applet so that the file path matches your **[dropbox-app-name]**. E.g. "Apps/SoCoGa"
 
 ![alt dropbox](dropbox-folderpath.png)
 
+###Setup Python Script
 
 Once your apps are setup, its time to setup your device that will run the script.
 
@@ -51,21 +56,21 @@ Install dropbox on the device (you may need to reboot at this point):
 
 Finally, setup the socoga.py script:
 
-Create your dropbox environment variable:
+Create your dropbox environment variable (or just hardcode it into the script):
 
 ``export SOCOGA_DROPBOX_TOKEN=[dropbox-token]``
 
 Using your preferred method, setup the socoga.py script to run continuously at a set interval on your device, I've found 3 seconds works just fine.
 
-If you choose to use [Home Assistant](), you can do this by following the [install instructions](), then clone this repo into your /.homeassisant directory, and lastly add the following automation to your configuration.yaml file:
+If you choose to use [Home Assistant](), you can do this by following the [install instructions](), then clone this repo into a /.homeassisant/scripts/ directory, and lastly add the following automation to your configuration.yaml file:
 
 ```
 shell_command:
-  alias: "Sonos volume setter script"
-  socoga: "python /home/homeassistant/.homeassistant/socoga/socoga.py"
+  alias: "SoCoGa script"
+  socoga: "python /home/homeassistant/.homeassistant/SoCoGa/socoga.py"
 
 automation:
-  alias: "Control Sonos from Google Home"
+  alias: "Control Sonos with Google Home voice commands"
   initial_state: True
   hide_entity: False
   trigger:
