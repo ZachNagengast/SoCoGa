@@ -1,8 +1,8 @@
 SoCoGa // Sonos Controller for Google Home
 ====
 
-SoCoGa (Sonos Controller + Google Assistant) is a simple Python script that to allows you to
- control [Sonos speakers](http://www.sonos.com/en-us/home) with simple voice commands from your [Google Home](https://madeby.google.com/home). It is based on the open source [SoCo project](https://github.com/SoCo/SoCo) and works in conjunction with [Google Assistant (Google Home)](https://assistant.google.com/), [IFTTT](https://ifttt.com/), and [Dropbox](https://www.dropbox.com/developers).
+SoCoGa (Sonos Controller + Google Assistant) is a Python script that to allows you to
+ control [Sonos speakers](http://www.sonos.com/en-us/home) with basic voice commands from your [Google Home](https://madeby.google.com/home). It is based on the open source [SoCo project](https://github.com/SoCo/SoCo) and works in conjunction with [Google Assistant (Google Home)](https://assistant.google.com/), [IFTTT](https://ifttt.com/), and [Dropbox](https://www.dropbox.com/developers).
 
 
 IFTTT applets
@@ -33,7 +33,7 @@ First you will need to create a personal dropbox app by signing up at https://ww
 4. Enter a name your personal app - the name doesn't matter but will be used as the **[dropbox-app-name]** variable in the IFTTT applet.
 
 
-Next, generate a personal token by following the instructions [here](https://blogs.dropbox.com/developers/2014/05/generate-an-access-token-for-your-own-account/) which you will need to paste in for the **[dropbox-token]** in config.txt.
+Next, generate a personal token by following the instructions [here](https://blogs.dropbox.com/developers/2014/05/generate-an-access-token-for-your-own-account/) which you will need to paste in for the **[dropbox-token]** in config.txt (covered shortly).
 
 ###Setup IFTTT
 
@@ -41,7 +41,7 @@ Now add one of the applets listed [above](http://imgur.com/vbWUv7z) to your IFTT
 
 ![alt dropbox](dropbox-folderpath.png)
 
-###Setup Python Script
+###Setup the Python Script
 
 Once your apps are setup, its time to setup your device that will run the script.
 
@@ -51,27 +51,29 @@ Once your apps are setup, its time to setup your device that will run the script
 
 ``pip install requests``
 
-Install dropbox on the device (you may need to reboot at this point):
+Install dropbox on the device (you may need to reboot after this point):
 
 ``pip install dropbox``
 
 Finally, setup the socoga.py script:
 
-Using your preferred method, setup the socoga.py script to run continuously at a set interval on your device, I've found 3 seconds works just fine.
+Using your preferred method, the socoga.py script should run continuously at a set interval on your device, I've found 3 second intervals works just fine.
 
-Create your config file (or just hardcode it into the script):
+Create your config file from he template (or just hard-code your token into the script):
 
 ``cp config.txt.example config.txt``
 
 ``sudo nano config.txt``
 
-Replace **[dropbox-token]** with your generated dropbox token found above.
+Replace **[dropbox-token]** with your generated dropbox token you created above.
 ```
 [socoga config]
 dropbox-token = [dropbox-token]
 platform = sonos
 ```
-Make sure your `configFilePath` in socoga.py is pointing to the correct location for config.txt as well.
+Confirm that your `configFilePath` in socoga.py is pointing to the absolute location for config.txt as well.
+
+``configFilePath = '/home/homeassistant/.homeassistant/SoCoGa/config.txt'``
 
 At this point, if you chose to use [Home Assistant](https://home-assistant.io), you can can setup an automation by following the [install instructions here](https://home-assistant.io/getting-started/), then cloning this repo into the main /.homeassisant/ directory, and lastly adding the following automation to your configuration.yaml file:
 
@@ -101,7 +103,7 @@ Congratulations, you should now have the script up and running on your local net
 Contributing
 ------------
 
-This project was put together after about a day of hacking, if there is a feature you would like, something you think might be more efficient, or if you just have an edit for this readme - pull requests are very welcomed.
+This project was put together after about a day of hacking, if there is a feature you would like, something you think might be more efficient, or even if you just have an edit for this readme - pull requests are very welcomed.
 
 
 License
