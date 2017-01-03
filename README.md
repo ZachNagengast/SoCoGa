@@ -2,14 +2,14 @@ SoCoGa // Sonos Controller for Google Home
 ====
 
 SoCoGa (Sonos Controller + Google Assistant) is a simple Python script that to allows you to
- control [Sonos speakers]() with simple voice commands from your [Google Home](). It is based on the open source [SoCo project]() and works in conjunction with [Google Assistant (Google Home)](), [IFTTT](), and [Dropbox]().
+ control [Sonos speakers](http://www.sonos.com/en-us/home) with simple voice commands from your [Google Home](https://madeby.google.com/home). It is based on the open source [SoCo project](https://github.com/SoCo/SoCo) and works in conjunction with [Google Assistant (Google Home)](https://assistant.google.com/), [IFTTT](https://ifttt.com/), and [Dropbox](https://www.dropbox.com/developers).
 
 
 IFTTT applets
 ------------
 
 Current working applets (Note: the word "set" is a GA override so alternative verbs must be used):
-- [Volume: "turn Sonos volume to #"]()
+- [Volume: "turn Sonos volume to #"](http://imgur.com/vbWUv7z)
 
 Future:
 - Toggle speech enhancement
@@ -19,7 +19,7 @@ Future:
 Installation
 ------------
 
-SoCoGa requires a Python script to run continuously on the same local network as the Sonos you would like to control. I recommend using a [Home Assistant]() automation running on an ethernet connected Raspberry Pi, but theoretically this will work on any device that can run Python.
+SoCoGa requires a Python script to run continuously on the same local network as the Sonos you would like to control. I recommend using a [Home Assistant](https://home-assistant.io/) automation running on an ethernet connected Raspberry Pi, but theoretically this will work on any device that can run Python.
 
 This process takes about 20 minutes so buckle up!
 
@@ -36,7 +36,7 @@ Next, generate a personal token by following the instructions [here](https://blo
 
 ###Setup IFTTT
 
-Now add one of the applets listed [above]() to your IFTTT account. Once you have connected your dropbox account, edit the applet so that the file path matches your **[dropbox-app-name]**. E.g. "Apps/SoCoGa"
+Now add one of the applets listed [above](http://imgur.com/vbWUv7z) to your IFTTT account. Once you have connected your dropbox account, edit the applet so that the file path matches your **[dropbox-app-name]**. E.g. "Apps/SoCoGa"
 
 ![alt dropbox](dropbox-folderpath.png)
 
@@ -44,7 +44,7 @@ Now add one of the applets listed [above]() to your IFTTT account. Once you have
 
 Once your apps are setup, its time to setup your device that will run the script.
 
- On your unix device, install [SoCo]():
+ On your unix device, install [SoCo](https://github.com/SoCo/SoCo):
 
 ``pip install soco``
 
@@ -72,7 +72,7 @@ platform = sonos
 ```
 Make sure your `configFilePath` in socoga.py is pointing to the correct location for config.txt as well.
 
-At this point, if you chose to use [Home Assistant](), you can can setup an automation by following the [install instructions here](), then cloning this repo into the main /.homeassisant/ directory, and lastly adding the following automation to your configuration.yaml file:
+At this point, if you chose to use [Home Assistant](https://home-assistant.io), you can can setup an automation by following the [install instructions here](https://home-assistant.io/getting-started/), then cloning this repo into the main /.homeassisant/ directory, and lastly adding the following automation to your configuration.yaml file:
 
 ```
 shell_command:
