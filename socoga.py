@@ -39,7 +39,7 @@ def cleanup(path):
     return
 
 # Create dropbox client object
-client = DropboxClient(SOCOGA_DROPBOX_TOKEN)
+client = DropboxClient(dropboxToken)
 
 # Check all the files in the app directory
 folder_metadata = client.metadata("/")
