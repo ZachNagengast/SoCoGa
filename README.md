@@ -24,7 +24,7 @@ SoCoGa requires a Python script to run continuously on the same local network as
 
 This process takes about 20 minutes so buckle up!
 
-###Setup Dropbox
+### Setup Dropbox
 
 First you will need to create a personal dropbox app by signing up at https://www.dropbox.com/developers/apps/. Sign up using the following steps:
 1. Click "Create app"
@@ -35,13 +35,13 @@ First you will need to create a personal dropbox app by signing up at https://ww
 
 Next, generate a personal token by following the instructions [here](https://blogs.dropbox.com/developers/2014/05/generate-an-access-token-for-your-own-account/) which you will need to paste in for the **[dropbox-token]** in config.txt (covered shortly).
 
-###Setup IFTTT
+### Setup IFTTT
 
 Now add one of the applets listed [above](http://imgur.com/vbWUv7z) to your IFTTT account. Once you have connected your dropbox account, edit the applet so that the file path matches your **[dropbox-app-name]**. E.g. "Apps/SoCoGa"
 
 ![alt dropbox](dropbox-folderpath.png)
 
-###Setup the Python Script
+### Setup the Python Script
 
 Once your apps are setup, its time to setup your device that will run the script.
 
