@@ -59,7 +59,7 @@ Finally, setup the socoga.py script:
 
 Using your preferred method, the socoga.py script should run continuously at a set interval on your device, I've found 3 second intervals works just fine.
 
-Create your config file from he template (or just hard-code your token into the script):
+Create your config file from the template (or just hard-code your token into the script):
 
 ``cp config.txt.example config.txt``
 
@@ -83,7 +83,7 @@ shell_command:
   socoga: "python /home/homeassistant/.homeassistant/SoCoGa/socoga.py"
 
 automation:
-  alias: "Control Sonos with Google Home"
+  alias: "Set Sonos volume from Google Home"
   initial_state: True
   hide_entity: False
   trigger:
